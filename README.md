@@ -1,71 +1,95 @@
-# PolyBreedTools_App
+# breedTools Poly App
 
-![Version](https://img.shields.io/badge/version-1.1-blue.svg)
-![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1-blue.svg)  
+![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)  
 ![Status](https://img.shields.io/badge/development-active-brightgreen.svg)
 
+**breedTools Poly App** is a Shiny application for ancestry estimation using genotypic data. Designed to support any species and ploidy level, it enables users to estimate admixture proportions using reference populations and visualizes ancestry results interactively.
 
-breedTools Poly App is a shiny app that simplifies mate allocation decisions for breeders.
-  
+---
+
 ## Overview
-This shiny app allows breeders to combine multiple traits in a selection index and assign a relative weight to each trait. AlloMate also allows to simplify mate allocation by filtering out possible crosses with negative ebvs and by using a kinship threshold between parents set by the user.
-Current version calculates kinship through pedigree information only, we are working on supporting genotypic information using an Optimal Contribution Selection (OCS) framework in the near future.
+
+This app allows users to:
+
+- Upload genotype files for **reference** and **validation** (aka test) individuals  
+- Upload a file mapping **reference IDs to populations**  
+- Specify **organism ploidy**  
+- Perform ancestry estimation using `breedTools::RpolyBreedTools()`  
+- Visualize ancestry proportions interactively for each individual  
+
+Designed to work seamlessly with **polyploid** and **non-model** species.
+
+---
 
 ## Dependencies
 
 This app requires the following R packages:
 
-- **shiny**: For building the interactive web app interface  
-- **DT**: For rendering interactive data tables  
-- **shinyjs**: For additional Shiny JavaScript utilities  
-- **readxl**: For reading Excel files (if needed)  
-- **openxlsx**: For writing Excel output files  
-- **dplyr**: For data manipulation  
-- **tidyr**: For data tidying  
-- **readr**: For reading tab-separated files  
-- **purrr**: For functional programming helpers  
-- **kinship2**: For pedigree and kinship calculations  
-- **tibble**: For enhanced data frames  
+- `shiny`: Build the user interface  
+- `BIGr`: For breedTools methods adapted to any ploidy
+- `tidyverse`: For data manipulation and plotting  
+- `scales`: For pretty formatting of percentages  
+- `viridis`: For color-blind friendly plots  
+- `openxlsx`: For outputting ancestry matrices to Excel  
 
-You can install any missing packages with:
+Install all dependencies with:
 
 ```r
-install.packages(c("shiny", "DT", "shinyjs", "readxl", "openxlsx", "dplyr", "tidyr", "readr", "purrr", "kinship2", "tibble"))
+install.packages(c("shiny", "tidyverse", "scales", "viridis", "openxlsx", "BIGr"))
+# install breedTools from GitHub
+remotes::install_github("Breeding-Insight/breedTools")
+```
+
+---
+
 ## Usage
 
-### To run the app:
+To run the app locally:
 
 ```r
-# Install required packages if not already installed
-packages <- c("shiny", "DT", "shinyjs", "readxl", "openxlsx", "dplyr", "tidyr")
-installed <- packages %in% rownames(installed.packages())
-if (any(!installed)) install.packages(packages[!installed])
+# Load shiny
+library(shiny)
 
-# Run the app from GitHub
-shiny::runGitHub("Breeding-Insight/AlloMate", subdir = "app")
+# Run the app from local directory
+runApp("path/to/breedTools_Poly_App")
 ```
-### Input files
-##### Pedigree
-3 column tab separated file with with headers id, sire and dam in any order.
 
-##### Selection Candidates
-2 column tab separated file with candidate ids in "id" column and M or F in "sex" column.
+---
 
-##### EBVs
-One tab-separated file per trait, 2 columns "ID and EBV"
+## Input Files
 
-### Output file
-Excel file with two tabs.  
-First tab shows a table with all possible male and female combinations regardless of any filters applied.  
-Second tab shows a matrix with females in rows and males in columns. Crosses with kinship coefficients larger than the threshold or negative EBVs will be blank.
+All files must be **tab-separated** and include headers.
 
-### Caution
-Before uploading, ensure that **EBVs are pre-processed**:
+### 1. Reference Genotype File  
+- Rows: Individuals  
+- Columns: Marker values (e.g., 0, 1, 2)  
+- Row names: Individual IDs  
 
-- **Centered and scaled**, if appropriate for your analysis  
-- **Transformed to a positive scale**, so that higher values represent better individuals  
+### 2. Validation Genotype File  
+- Same format as reference file  
+- Must contain the **same markers in the same order**
 
-Proper preprocessing ensures that the selection index and filtering steps in the app function as intended.
+### 3. Reference ID File  
+- Two columns:  
+  - `ID`: Matches row names in the reference file  
+  - `Population`: Reference group or population name
+
+### 4. Ploidy  
+- Select organism ploidy from the app interface (e.g., 2, 4, 6)
+
+---
+
+## Output
+
+The app produces:
+
+- An interactive **ancestry barplot** for each validation individual  
+- A **downloadable Excel file** with ancestry proportions:  
+  - Rows: Validation individuals  
+  - Columns: Reference populations
+
+---
 
 ## Citation
 
