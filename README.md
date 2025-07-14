@@ -1,10 +1,10 @@
-# breedTools Poly App
+# PolyBreedTools_App
 
-![Version](https://img.shields.io/badge/version-1.1-blue.svg)  
-![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)  
+![Version](https://img.shields.io/badge/version-1.1-blue.svg)
+![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)
 ![Status](https://img.shields.io/badge/development-active-brightgreen.svg)
 
-**breedTools Poly App** is a Shiny application for ancestry estimation using genotypic data. Designed to support any species and ploidy level, it enables users to estimate admixture proportions using reference populations and visualizes ancestry results interactively.
+**PolyBreedTools_App** is a Shiny application for ancestry estimation using genotypic data. Designed to support any species and ploidy level, it enables users to estimate admixture proportions using reference populations and visualizes ancestry results interactively.
 
 ---
 
@@ -99,4 +99,4 @@ For publication, please cite:
 - [Sandercock et al.](https://acsess.onlinelibrary.wiley.com/doi/10.1002/tpg2.70067) for methods expansion to polyploidy  
 - This app:  
 Chinchilla-Vargas, Josue. 2025.
-“breedTools Poly App: Shiny App for Genomic Ancestry Estimation in Any Species.” https://github.com/Breeding-Insight/breedTools_Poly_App RRID: Pending
+“PolyBreedTools_App: Shiny App for Genomic Ancestry Estimation in Any Species.” https://github.com/Breeding-Insight/breedTools_Poly_App RRID: Pending
