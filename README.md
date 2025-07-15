@@ -99,4 +99,4 @@ For publication, please cite:
 - [Sandercock et al.](https://acsess.onlinelibrary.wiley.com/doi/10.1002/tpg2.70067) for methods expansion to polyploidy  
 - This app:  
 Chinchilla-Vargas, Josue, Breeding Insight team. 2025.
-“PolyBreedTools_App: Shiny App for Genomic Ancestry Estimation in Any Species.” https://github.com/Breeding-Insight/breedTools_Poly_App RRID: Pending
+“PolyBreedTools_App: Shiny App for Genomic Ancestry Estimation in Any Species.” https://github.com/Breeding-Insight/breedTools_Poly_App RRID: SCR_027197
