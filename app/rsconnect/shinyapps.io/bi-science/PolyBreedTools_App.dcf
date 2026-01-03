@@ -1,0 +1,12 @@
+name: PolyBreedTools_App
+title: PolyBreedTools_App
+username: bi-science
+account: bi-science
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16369436
+bundleId: 11396260
+url: https://bi-science.shinyapps.io/PolyBreedTools_App/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
